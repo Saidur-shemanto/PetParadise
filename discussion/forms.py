@@ -18,6 +18,7 @@ class PostCreateForm(forms.ModelForm):
         self.fields['post_title'].label = 'Post Title'
         self.fields['postText'].label = 'Write your post'
         self.fields['post_image'].label = 'Upload Image'
+        self.fields['post_image'].required = False
 
 class PostUpdateForm(forms.ModelForm):
     class Meta:

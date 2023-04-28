@@ -5,11 +5,18 @@
 <h1>All Posts</h1>
 
 {% if posts %}
+
+<div class="mb-4">
+    <a href="{% url 'discussion:create' %}" class="btn btn-primary btn-lg">Create Post</a>
+</div>
+
 <div class="row">
     {% for post in object_list %}
     <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
         <div class="card">
+            {% if post.post_image %}
             <img src="{{ post.post_image.url }}" class="card-img-top" alt="{{ post.post_title }}">
+            {% endif %}
             <div class="card-body">
                 <h5 class="card-title">{{ post.post_title }}</h5>
                 <p class="card-text">{{ post.postText }}</p>

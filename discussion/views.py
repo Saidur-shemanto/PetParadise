@@ -21,7 +21,7 @@ class CreatePost(LoginRequiredMixin, CreateView):
     model = post
     form_class = PostCreateForm
     template_name = 'post/post_form.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('discussion:post_list')
 
     def form_valid(self, form):
         form.instance.user = self.request.user

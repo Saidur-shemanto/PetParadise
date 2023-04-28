@@ -62,7 +62,7 @@ ROOT_URLCONF = 'petparadise.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],
+        'DIRS': [BASE_DIR.joinpath('template')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

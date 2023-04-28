@@ -27,5 +27,3 @@ urlpatterns = [
     # path('postUpdate/<int:pk>/', views.UpdatePost.as_view(), name='update'),
     # path('postDelete/<int:pk>/', views.DeletePost.as_view(), name='delete'),
 ]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

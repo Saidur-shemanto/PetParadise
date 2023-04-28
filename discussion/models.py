@@ -12,7 +12,7 @@ class post(models.Model):
     postText = models.TextField()
     # postText_html = models.TextField(editable=False)
     # post_slug = models.SlugField(null = True)
-    post_image = models.ImageField(upload_to='media/', null= True)
+    post_image = models.ImageField(upload_to='media/', null= True, blank=True)
     update_date = models.DateTimeField(auto_now=True, null = True)
     create_date = models.DateTimeField(null = True)  
     user = models.ForeignKey(
