@@ -9,9 +9,6 @@ from .models import post, post_comment
 from django.utils import timezone
 from .forms import PostCreateForm, PostUpdateForm
 
-from braces.views import SelectRelatedMixin
-from . import models
-from . import forms
 
 from django.contrib.auth import get_user_model
 

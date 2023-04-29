@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'braces',
     'crispy_forms',
+    'adoption',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
