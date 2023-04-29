@@ -24,7 +24,7 @@ class CreatePost(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('discussion:post_list')
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.post_auth = self.request.user
         form.instance.create_date = timezone.now()
         return super().form_valid(form)
 

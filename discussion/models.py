@@ -15,11 +15,11 @@ class post(models.Model):
     post_image = models.ImageField(upload_to='media/', null= True, blank=True)
     update_date = models.DateTimeField(auto_now=True, null = True)
     create_date = models.DateTimeField(null = True)  
-    user = models.ForeignKey(
+    post_auth = models.ForeignKey(
         User, on_delete=models.CASCADE,
-        related_name= 'posts'
+        related_name= 'post_user'
     )
-    def user(self):
+    def get_user(self):
         obj = User.objects.get(pk=self.user.pk)
         return obj.username
 

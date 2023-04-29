@@ -3,12 +3,13 @@
 
 {% block content %}
 <h1>All Posts</h1>
-
-{% if posts %}
-
 <div class="mb-4">
     <a href="{% url 'discussion:create' %}" class="btn btn-primary btn-lg">Create Post</a>
 </div>
+
+{% if posts %}
+
+
 
 <div class="row">
     {% for post in object_list %}
