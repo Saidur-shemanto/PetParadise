@@ -13,4 +13,8 @@ urlpatterns = [
     path('signup/', 
         views.Signup.as_view(), 
         name='signup'),
+    path('profile/', 
+        views.UserProfileView.as_view(), 
+        name='user_Profile'),
+
 ]

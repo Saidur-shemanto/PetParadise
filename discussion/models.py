@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 import markdown
 from autoslug import AutoSlugField
+from user.models import userprofile
 # Create your models here.
 
 
@@ -16,7 +17,7 @@ class post(models.Model):
     update_date = models.DateTimeField(auto_now=True, null = True)
     create_date = models.DateTimeField(null = True)  
     post_auth = models.ForeignKey(
-        User, on_delete=models.CASCADE,
+        userprofile, on_delete=models.CASCADE,
         related_name= 'post_user'
     )
     def get_user(self):

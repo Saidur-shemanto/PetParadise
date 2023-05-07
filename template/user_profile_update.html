@@ -18,18 +18,12 @@
 </head>
 
 <body>
-    <div class="container" style="margin: 0px 200px 0px 200px;">
-        <div class="jumbotron">
-            <h1 class="display-4">SIGN UP!!</h1>
-            <p>Enter your email and password !</p>
-        </div>
-    </div>
     <div style="margin: 0px 200px 0px 200px;">
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% load bootstrap5 %}
             {% bootstrap_form form%}
-            <input type="submit" class='btn btn-primary' value='sign up'>
+            <input type="submit" class='btn btn-default' value='sign up'>
         </form>
     </div>
 
