@@ -4,6 +4,10 @@ by entering the following command
 
 python -m venv venv
 
+
+if it requires permission
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
 Then, you have to activate your venv
 venv/Scripts/activate
 
