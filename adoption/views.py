@@ -37,3 +37,5 @@ class AdoptionPostListView(ListView):
     template_name = 'adopt/adoption_list.html'
     context_object_name = 'adoptions'
     ordering = ['-create_date']
+
+

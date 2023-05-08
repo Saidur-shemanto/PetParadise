@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+
+{% block rescue %}
+<h1>All Adoptions</h1>
+{% if user.membership_stat == 'N' %}
+<div class="mb-4">
+    <a href="{% url 'rescues:rescue_apply' %}" class="btn btn-primary btn-lg">apply for being a rescuer</a>
+</div>
+{% elif user.membership_stat == 'P' %}
+<p>Admin will preview your request</p>
+{% elif user.membership_stat == 'R' %}
+<p>You are a rescuer!!</p>
+{% endif %}
+<div class="mb-4">
+    <a href="{% url 'rescues:rescue_post' %}" class="btn btn-primary btn-lg">post for rescueing</a>
+</div>
+
+{% if user.membership_stat == 'R' %}
+{% if rescues %}
+
+<div class="row">
+    {% for object_list in rescues %}
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card">
+            <div class="dropdown position-absolute top-0 end-0 mt-2 me-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-placement="left">
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="#">Save</a></li>
+                    <li><a class="dropdown-item" href="#">Update</a></li>
+                    <li><a class="dropdown-item" href="#">Delete</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Report</a></li>
+                </ul>
+            </div>
+
+            {% if object_list.rescue_image %}
+            <img src="{{ object_list.rescue_image.url }}" class="card-img-top" alt="An image"
+                style="height: auto; width: auto;">
+            {% endif %}
+            <div class="card-body">
+                <p class="card-text">Animal Name :{{ object_list.animalName }}</p>
+                <p class="card-text"><small class="text-muted">{{ object_list.create_date|date:"F j, Y" }}</small></p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+
+{% else %}
+<p>There are no posts yet.</p>
+{% endif %}
+{% elif user.membership_stat == 'N' %}
+<p>You need to apply for being a rescuer</p>
+{% endif %}
+
+{% endblock %}

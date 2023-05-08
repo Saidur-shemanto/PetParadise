@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'braces',
     'crispy_forms',
     'adoption',
+    'rescue',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
@@ -140,7 +141,7 @@ LOGOUT = 'home'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-STATIC_URL = 'static/'
-STATICFILES_DIR =  BASE_DIR.joinpath('static')
-
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "petparadise/static"]
+STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 AUTH_USER_MODEL = 'user.userprofile'

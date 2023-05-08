@@ -1,72 +1,126 @@
 {% extends "base.html" %}
-{% load bootstrap5 %}
 
 <!DOCTYPE html>
 <html>
+{% block head %}
 
 <head>
-    <title>User Profile</title>
-    <style type="text/css">
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+    <title>My Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
         }
 
-        .top {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            margin-bottom: 20px;
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
         }
 
-        .bottom {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            justify-content: flex-start;
-            width: 100%;
-        }
-
-        .image {
-            width: 200px;
-            height: 200px;
+        .profimg {
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            margin-right: 20px;
+            object-position: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .name {
-            font-size: 24px;
+
+
+        label {
+            display: block;
             font-weight: bold;
-            margin-right: 20px;
-        }
-
-        .details {
-            font-size: 16px;
-            line-height: 1.5;
+            margin-bottom: 5px;
         }
     </style>
 </head>
+{% endblock %}
 
 <body>
     {% block profile %}
-    <div class="container">
-        <div class="top">
-            <img class="image" src="{{ user.user_image.url }}" alt="User Image">
-            <div class="name">{{ user.parent.username }}</div>
-        </div>
-        <div class="bottom">
-            <div class="details">
-                <p>Contact: {{ user.user_contact }}</p>
-                <p>Birthdate: {{ user.birthdate }}</p>
-                <p>Membership Status: {{ user.membership_stat }}</p>
+    <main>
+        <img class='profimg' src="{{ user.user_image.url }}" alt="User Image">
+        <h2>{{ user.parent.username }}</h2>
+        <ul>
+            <li>
+                <label>Contact No:</label>
+                <span>{{ user.user_contact }}</span>
+            </li>
+            <li>
+                <label>Birthdate:</label>
+                <span>{{ user.birthdate }}</span>
+            </li>
+            <li>
+                <label>Email:</label>
+                <span>{{ user.email }}</span>
+            </li>
+            <li>
+                <label>Membership type:</label>
+                {% if user.membership_stat == 'N' %}
+                <span>Normal</span>
+                {% elif user.membership_stat == 'P' %}
+                <span>Pending</span>
+                {% elif user.membership_stat == 'R' %}
+                <span>Rescuer</span>
+                {% endif %}
+            </li>
+        </ul>
+        <h3>Adoption Posts</h3>
+        {% if adoptions %}
+
+        <div class="row">
+            {% for object_list in adoptions %}
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card">
+                    <div class="dropdown position-absolute top-0 end-0 mt-2 me-2">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false" data-bs-placement="left">
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#">Save</a></li>
+                            <li><a class="dropdown-item" href="#">Update</a></li>
+                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Report</a></li>
+                        </ul>
+                    </div>
+
+                    {% if object_list.adopt_image %}
+                    <img src="{{ object_list.adopt_image.url }}" class="card-img-top" alt="An image"
+                        style="height: auto; width: auto;">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-text">{{ object_list.adoptText }}</h5>
+                        <p class="card-text">Contact No: {{ object_list.adoptee_contact }}</p>
+                        <p class="card-text">{{ object_list.adoptee_location }}</p>
+                        <p class="card-text">Animal Name :{{ object_list.animalName }}</p>
+                        <p class="card-text">Is it adopted? :{{ object_list.adoptState }}</p>
+                        <p class="card-text"><small class="text-muted">{{ object_list.create_date|date:"F j, Y"
+                                }}</small></p>
+                    </div>
+                </div>
             </div>
+            {% endfor %}
+
         </div>
-    </div>
-    {% endblock %}
+
+
+
+        {% else %}
+        <p>There are no posts yet.</p>
+        {% endif %}
+
+        {%endblock%}
+
 </body>
 
 </html>
