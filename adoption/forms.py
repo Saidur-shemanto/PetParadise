@@ -1,5 +1,5 @@
 from django import forms
-from .models import adoptionPost
+from .models import adoptionPost, adoptionReport
 
 class adoptionForm(forms.ModelForm):
     class Meta:
@@ -21,3 +21,7 @@ class adoptUpdateForm(forms.ModelForm):
         model = adoptionPost
         fields = ['adoptText', 'adoptee_contact', 'adopt_image', 'adoptee_location', 'adoptState', 'animalName']
 
+class adoptionreportForm(forms.ModelForm):
+    class Meta:
+        model = adoptionReport
+        fields = ('report_type',)

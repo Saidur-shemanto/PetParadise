@@ -25,18 +25,6 @@ class CreatePost(LoginRequiredMixin, CreateView):
         form.instance.create_date = timezone.now()
         return super().form_valid(form)
 
-# def post_create(request):
-#     if request.method == 'POST':
-#         form = PostCreateForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             post = form.save(commit=False)
-#             post.user = request.user
-#             post.save()
-#             return redirect('posts:post_detail', pk=post.pk)
-#     else:
-#         form = PostCreateForm()
-#     return render(request, 'post/post_form.html', {'form': form})
-
 class PostListView(ListView):
     model = post
     template_name = 'post/post_list.html'
