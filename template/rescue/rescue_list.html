@@ -2,18 +2,23 @@
 {% load bootstrap5 %}
 
 {% block rescue %}
+
 <h1>All Adoptions</h1>
 {% if user.membership_stat == 'N' %}
-<div class="mb-4">
-    <a href="{% url 'rescues:rescue_apply' %}" class="btn btn-primary btn-lg">apply for being a rescuer</a>
-</div>
-{% elif user.membership_stat == 'P' %}
-<p>Admin will preview your request</p>
-{% elif user.membership_stat == 'R' %}
-<p>You are a rescuer!!</p>
-{% endif %}
-<div class="mb-4">
-    <a href="{% url 'rescues:rescue_post' %}" class="btn btn-primary btn-lg">post for rescueing</a>
+<div class="text-center">
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <a href="{% url 'rescues:rescue_apply' %}" class="btn btn-primary btn-lg">apply for being a rescuer</a>
+        </div>
+        {% elif user.membership_stat == 'P' %}
+        <p>Admin will preview your request</p>
+        {% elif user.membership_stat == 'R' %}
+        <p>You are a rescuer!!</p>
+        {% endif %}
+        <div class="col-auto">
+            <a href="{% url 'rescues:rescue_post' %}" class="btn btn-primary btn-lg">post for rescueing</a>
+        </div>
+    </div>
 </div>
 
 {% if user.membership_stat == 'R' %}

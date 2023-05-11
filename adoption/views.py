@@ -21,19 +21,19 @@ class CreateAdoptPost(LoginRequiredMixin, CreateView):
         form.instance.create_date = timezone.now()
         return super().form_valid(form)
 
-def adoption_post_create(request):
-    if request.method == 'POST':
-        form = adoptionForm(request.POST, request.FILES)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.user = request.user
-            post.save()
-            return redirect('adoptions:post_detail', pk=post.pk)
-    else:
-        form = adoptionForm()
-    return render(request, 'adopt/adoption_form.html', {'form': form})
+# def adoption_post_create(request):
+#     if request.method == 'POST':
+#         form = adoptionForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.user = request.user
+#             post.save()
+#             return redirect('adoptions:post_detail', pk=post.pk)
+#     else:
+#         form = adoptionForm()
+#     return render(request, 'adopt/adoption_form.html', {'form': form})
 
-class AdoptionPostListView(ListView):
+class AdoptionPostListView(LoginRequiredMixin, ListView):
     model = adoptionPost
     template_name = 'adopt/adoption_list.html'
     context_object_name = 'adoptions'
@@ -52,3 +52,12 @@ class reportAdoption(LoginRequiredMixin, CreateView):
         adoption_post = get_object_or_404(adoptionPost, pk=post_id)
         form.instance.adoption_post = adoption_post
         return super().form_valid(form)
+
+class AdoptionProfileView(LoginRequiredMixin, ListView):
+    model = adoptionPost
+    template_name = 'profile.html'
+    context_object_name = 'adoptions'
+    ordering = ['-create_date']
+    def get_queryset(self):
+        user = self.request.user
+        return super().get_queryset().filter(adoptee=user)

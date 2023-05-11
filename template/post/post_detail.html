@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+
+{% block content %}
+<h1>{{ post.post_title }}</h1>
+<p>{{ post.postText }}</p>
+<img src="{{ post.post_image.url }}" alt="{{ post.post_title }}" style="height: 30rem; width: 30reem;">
+<p><small class="text-muted">{{ post.create_date|date:"F j, Y" }}</small></p>
+
+<hr>
+
+<h2>Comments</h2>
+{% for comment in post.post_comment_set.all %}
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">{{ comment.comment_user.username }}</h5>
+        <p class="card-text">{{ comment.commentText }}</p>
+        <p class="card-text"><small class="text-muted">{{ comment.create_date|date:"F j, Y" }}</small></p>
+    </div>
+</div>
+{% empty %}
+<p>No comments yet.</p>
+{% endfor %}
+
+<hr>
+
+<h2>Add Comment</h2>
+<form method="post" action="{% url 'posts:comment_create' post.pk %}">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit Comment</button>
+</form>
+{% endblock %}

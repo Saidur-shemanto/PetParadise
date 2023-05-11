@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import post
+from .models import post, post_comment
 
 from django import forms
 from .models import post
@@ -25,7 +25,10 @@ class PostUpdateForm(forms.ModelForm):
         model = post
         fields = ['post_title', 'postText', 'post_image']
 
-
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = post_comment
+        fields = ('commentText',)
 # class PostCreateForm(UserCreationForm):
 
 #     class Meta:

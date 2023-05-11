@@ -21,8 +21,7 @@ class post(models.Model):
         related_name= 'post_user'
     )
     def get_user(self):
-        obj = User.objects.get(pk=self.user.pk)
-        return obj.username
+        return self.post_auth.username
 
     def __str__(self) -> str:
         return self.post_title
@@ -46,8 +45,8 @@ class post_comment(models.Model):
     create_date = models.DateTimeField(null = True)  
     post = models.ForeignKey(post, on_delete=models.CASCADE)
     comment_user = models.ForeignKey(
-        User, on_delete=models.CASCADE
+        userprofile, on_delete=models.CASCADE
     )
-    def comment_user(self):
-        obj = User.objects.get(pk=self.user.pk)
-        return obj.username
+    # def comment_user(self):
+    #     obj = User.objects.get(pk=self.user.pk)
+    #     return obj.username

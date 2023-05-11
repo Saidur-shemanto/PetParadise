@@ -73,51 +73,34 @@
             </li>
         </ul>
         <h3>Adoption Posts</h3>
-        {% if adoptions %}
 
         <div class="row">
-            {% for object_list in adoptions %}
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+            {% for adoption in adoptions %}
+            {%if adoption.adoptee == user %}
+            <div class="col-sm-6 col-md-4 col-lg-12 mb-4">
                 <div class="card">
-                    <div class="dropdown position-absolute top-0 end-0 mt-2 me-2">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-bs-toggle="dropdown" aria-expanded="false" data-bs-placement="left">
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="#">Save</a></li>
-                            <li><a class="dropdown-item" href="#">Update</a></li>
-                            <li><a class="dropdown-item" href="#">Delete</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Report</a></li>
-                        </ul>
-                    </div>
-
-                    {% if object_list.adopt_image %}
-                    <img src="{{ object_list.adopt_image.url }}" class="card-img-top" alt="An image"
-                        style="height: auto; width: auto;">
+                    {% if adoption.adopt_image %}
+                    <img src="{{ adoption.adopt_image.url }}" class="card-img-top" alt="{{ adoption.animalName }}"
+                        style="height: 250px; width:400px;">
                     {% endif %}
                     <div class="card-body">
-                        <h5 class="card-text">{{ object_list.adoptText }}</h5>
-                        <p class="card-text">Contact No: {{ object_list.adoptee_contact }}</p>
-                        <p class="card-text">{{ object_list.adoptee_location }}</p>
-                        <p class="card-text">Animal Name :{{ object_list.animalName }}</p>
-                        <p class="card-text">Is it adopted? :{{ object_list.adoptState }}</p>
-                        <p class="card-text"><small class="text-muted">{{ object_list.create_date|date:"F j, Y"
-                                }}</small></p>
+                        <h5 class="card-title">NIGGA</h5>
+                        <p class="card-text">NIGGA1</p>
+                        <p class="card-text"><small class="text-muted">{{ adoption.create_date|date:"F j, Y" }}</small>
+                        </p>
                     </div>
+
                 </div>
             </div>
-            {% endfor %}
+            {% endif %}
+            {% empty %}
+            <p>There are no posts yet.</p>
 
+            {% endfor %}
         </div>
 
 
 
-        {% else %}
-        <p>There are no posts yet.</p>
-        {% endif %}
 
         {%endblock%}
 

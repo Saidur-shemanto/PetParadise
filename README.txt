@@ -11,7 +11,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 Then, you have to activate your venv
 venv/Scripts/activate
 
-then select the interpreter from\
+then select the interpreter from
  view->command palette -> python: select interpreter -> recommended one
 
 then install the reequirements
