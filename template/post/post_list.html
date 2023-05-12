@@ -16,6 +16,8 @@
         width: 70%;
         font-size: 20px;
         font-weight: bold;
+        border-radius: 10px;
+        text-decoration: none
     }
 </style>
 <h1>All Posts</h1>
@@ -27,11 +29,30 @@
 <div class="post-list">
     {% for post in posts %}
     <div class="post-box">
-        <a href="{% url 'posts:post_detail' post.pk %}">{{ post.post_title }}</a>
+        <a href="{% url 'posts:post_detail' post.pk %}" class="listpost">
+
+            {{ post.post_title }}
+
+
+        </a>
+        <button class="btn btn-primary like-btn" onclick="incrementLikes('like-count-{{ post.pk }}')">Like <span
+                id="like-count-{{ post.pk }}">0</span></button>
     </div>
+
     {% endfor %}
 </div>
 {% else %}
 <p>There are no posts yet.</p>
 {% endif %}
+<script>
+    function incrementLikes(likeCountId) {
+        let likeCountElement = document.getElementById(likeCountId);
+        let likeCount = parseInt(likeCountElement.textContent);
+        likeCount++;
+        likeCountElement.textContent = likeCount;
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 {% endblock %}

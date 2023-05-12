@@ -25,6 +25,5 @@ class userprofile(AbstractUser):
     birthdate = models.DateTimeField(null=True)
     membership_stat = models.CharField(max_length=1, choices=membership_choice, default=member_normal)
 
-    def __str__(self):
-        return f"{self.parent.username}'s Profile"
+
     

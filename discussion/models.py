@@ -15,7 +15,8 @@ class post(models.Model):
     # post_slug = models.SlugField(null = True)
     post_image = models.ImageField(upload_to='media/', null= True, blank=True)
     update_date = models.DateTimeField(auto_now=True, null = True)
-    create_date = models.DateTimeField(null = True)  
+    create_date = models.DateTimeField(null = True)
+    # likes = models.PositiveIntegerField(default=0)  
     post_auth = models.ForeignKey(
         userprofile, on_delete=models.CASCADE,
         related_name= 'post_user'

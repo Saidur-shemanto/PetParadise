@@ -9,6 +9,8 @@ from .models import post, post_comment
 from django.utils import timezone
 from .forms import PostCreateForm, CommentForm
 from django.shortcuts import reverse
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 
 
 from django.contrib.auth import get_user_model
@@ -64,8 +66,8 @@ class PostDetailView(DetailView):
 class CreateComment(LoginRequiredMixin, CreateView):
     model = post_comment
     form_class = CommentForm
-    template_name = 'post/create_comment.html'  # Create a template for the comment creation form
-    success_url = None  # Specify the URL to redirect after comment creation
+    template_name = 'post/create_comment.html'
+    success_url = None 
 
     def form_valid(self, form):
         form.instance.comment_user = self.request.user
@@ -73,5 +75,5 @@ class CreateComment(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
     
     def get_success_url(self):
-        # Redirect to the detail view of the post
         return reverse('posts:post_detail', kwargs={'pk': self.kwargs['pk']})
+

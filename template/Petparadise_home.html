@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nova+Oval&family=Ubuntu&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'CSS/P.css'%}">
+    <!-- <link rel="stylesheet" href="{% static 'CSS/P.css'%}"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-CyIXDeBgIU4xn4ij4CJvgZohdSwZq3kRKjM2Q/sUhJyX9b1xAT/XeTfugRkOYfthdak1pPeaJSpWEuR7VgMMXQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -27,46 +27,6 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: 100% 100%;
-            /* background: size 180vh;
-    height: 50vh; */
-        }
-
-        /* .content {
-    height: 50vh;
-    overflow-y: auto;
-} */
-
-
-        .container-niga,
-        .container {
-            display: block;
-        }
-
-        .container-niga {
-            font-family: 'Nova Oval', cursive;
-            font-family: 'Ubuntu', sans-serif;
-            margin-top: 70px;
-            float: left;
-            width: 700px;
-            padding: 10px;
-            text-align: center;
-        }
-
-        /* .blank-container {
-    height: 100vh;
-    background-color: white;
-} */
-
-        .page-header {
-            text-align: center;
-            color: black;
-            font-weight: bold;
-            font-size: 10em;
-
-        }
-
-        .caption {
-            height: 20rem;
         }
     </style>
 
@@ -74,10 +34,14 @@
 
 <body>
 
-    <div class="container-fluid">
+    <div class="container-fluid-home" style="background-image: url('https://www.petparadisebd.com/wp-content/uploads/2021/11/pet-bed-banner1.jpg');
+            background-repeat: no-repeat;
+            
+            background-size: 100% 100%;">
         <div class="row">
             <div class="col-md-9 container-niga">
-                <div class="container-niga" style="background-color:white; border: radius 3%; width: 30rem;">
+                <div class="container-niga"
+                    style="background-color: #EFE7E4;border: radius 3%; width: 25rem; height: 100%;">
                     <div class="jumbotron">
                         <h1>Saving Animals, Changing Lives</h1>
                         <p>Saving one animal won't change the world, but it will change the world for that one animal
@@ -95,13 +59,13 @@
     </div>
 
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top: 20rem;">
         <div class="page-header">
-            <h1>Featured</h1>
+            <h1 style="font-size: 50px;">Features</h1>
             <p></p>
         </div>
 
-        <div class="_container-fluid" id="_featured">
+        <div class="_container-fluid" id="_featured" style="background-color: #F7F2EF;">
             <div class="owl-carousel owl-theme">
                 <div class="shadow p-2 item">
                     <div class="container-fluid" style="background-color: white;">

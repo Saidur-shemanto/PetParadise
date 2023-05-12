@@ -5,7 +5,6 @@ from user.models import userprofile
 # Create your models here.
 class rescuePost(models.Model):
 
-    location = models.TextField()
     rescue_image = models.ImageField(upload_to='media/', null= True, blank=True)
     update_date = models.DateTimeField(auto_now=True, null = True)
     create_date = models.DateTimeField(null = True)  
