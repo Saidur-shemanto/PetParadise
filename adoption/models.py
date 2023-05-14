@@ -33,10 +33,10 @@ class adoptionReport(models.Model):
         Hate_Speech = 'H'
         
         report_choice = [
-        (Fake, 'F'),
-        (Scam, 'S'),
-        (Nudity, 'N'),
-        (Hate_Speech, 'H'),
+        (Fake, 'Fake'),
+        (Scam, 'Scam'),
+        (Nudity, 'Nudity'),
+        (Hate_Speech, 'Hate_speech'),
        
             ]
         report_date = models.DateTimeField(null = True)  

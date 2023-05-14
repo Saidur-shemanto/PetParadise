@@ -29,7 +29,7 @@
 <div class="post-list">
     {% for post in posts %}
     <div class="post-box">
-        <a href="{% url 'posts:post_detail' post.pk %}" class="listpost">
+        <a href="{% url 'posts:post_detail' post.pk %}" class="listpost" style="text-decoration:none">
 
             {{ post.post_title }}
 
